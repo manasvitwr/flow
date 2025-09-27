@@ -10,4 +10,4 @@ _Flow_ is a timer and task list app that lets you assign time to your tasks, org
 * Bookmark important tasks or time blocks on your personal timeline
 * Built to work for everyone, whether you’re planning study sessions or work projects
 
--Making flow available soon so you can level up your daily routine—stay tuned for updates!-
+-- Making flow available soon so you can level up your daily routine, stay tuned for updates! --
