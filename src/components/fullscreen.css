@@ -1,0 +1,33 @@
+
+.timer-card:fullscreen .timer-digits {
+  font-size: 200px;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+.timer-card:fullscreen .timer-main-row{
+  transform: scale(1.5); /* Increased scale factor */
+  margin: 2rem 0; /* Add breathing room */
+}
+
+.timer-card:fullscreen .fg-manage {
+  display: none !important;
+}
+
+.timer-card:fullscreen .task-label-pill{
+  transform: scale(1.5); /* Scale control buttons too */
+  margin-top: 3rem; /* Add spacing */
+  align-items: center;
+}
+
+.timer-card:fullscreen  {
+  border: none !important;
+  box-shadow: none !important;
+  align-items: center;
+}
+
