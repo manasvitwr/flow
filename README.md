@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# Flow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Built for timeblocking.**
 
-Currently, two official plugins are available:
+Time just disappears when you're juggling too much. Flow is a visual timer and task manager that lets you assign time blocks to your tasks and actually see your day play out on a timeline. No fluff, no overcomplicated features—just a clean way to organize your time and get stuff done.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Visual timeline** — Your entire day on one screen, not scattered across lists
+- **Task timers** — Set a timer for each task, watch it count down
+- **Timeblocking built-in** — Assign chunks of time to specific tasks and stick to them
+- **Retro UI** — Optional themes that don't look like every other productivity tool
+- **Bookmarks** — Flag important blocks so you don't lose track
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Why timeblocking?
 
-## Expanding the ESLint configuration
+If you've never tried it, timeblocking is simple: instead of making endless to-do lists, you assign specific time slots to each task. It forces you to be realistic about how long things take, keeps you focused on one thing at a time, and prevents that "where did my day go" feeling.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Flow makes this dead simple—just add a task, set a timer, and let it run. No overthinking, no setup paralysis.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+You'll need:
+- **Node.js** (v16 or higher)
+- **npm** or **yarn**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+That's it.
+
+## Getting Started
+
+Clone it and run:
+
+```bash
+git clone https://github.com/manasvitwr/flow.git
+cd flow
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open `http://localhost:5173` and you're in.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Disclaimer
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The current tech stack (React + Vite) makes the initial load a bit slower than I'd like. I'm working on optimizing this—probably migrating to a lighter setup or doing some lazy loading magic. For now, it works fine once it's loaded, but don't expect instant startup times.
+
+Also, this is still being actively developed. Bugs exist. Features are being added. If something breaks, feel free to open an issue.
+
+---
+
+**(being deployed soon)**
