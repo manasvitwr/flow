@@ -1,0 +1,467 @@
+/* Tamagotchi Mode Styles */
+.tamagotchi-mode {
+  --pixel-size: 0.5px;
+  --pixel-color: #e2e2e2;
+  --pixel-bg: #00000000;
+  --led-glow: 0 0 10px #fdfdfdff; 
+  --grid-color: rgba(255, 255, 255, 0.1);
+  --mojangles: 'Minecraftia', monospace;
+  transition: background 0.6s cubic-bezier(0.4,0,0.2,1), color 0.6s cubic-bezier(0.4,0,0.2,1), filter 0.6s cubic-bezier(0.4,0,0.2,1);
+  filter: contrast(1.2) saturate(1.1) drop-shadow(0 0 8px #fff8);
+  background: var(--pixel-bg) !important;
+  position: relative;
+}
+
+/* Grid Background */
+.tamagotchi-mode::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 8px 8px;
+  pointer-events: none;
+  z-index: 1;
+}
+.tamagotchi-mode .task-label-pill {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 18em;;
+  margin-bottom: 1.9em;
+  font-family: var(--mojangles) !important;
+  font-size: 1.5rem;
+  background: var(--pixel-bg);
+  color: var(--pixel-color);
+  border: 0px solid var(--pixel-color);
+  border-radius: 6px;
+  box-shadow:  0px 0px 0 2px var(--pixel-color);
+  text-shadow: var(--led-glow);
+  image-rendering: pixelated;
+  line-height: 2rem;
+  letter-spacing: 0.005em;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  padding: 0.8rem  0.09em 0.02em 1em;
+}
+
+.tamagotchi-mode .bookmark-options-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.2em;
+  font-family: var(--mojangles) !important;
+  font-size: 15px;
+  background: var(--pixel-bg);
+  color: var(--pixel-color);
+  border: 0px solid var(--pixel-color);
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px var(--pixel-bg), 0 0 0 2px var(--pixel-color);
+  text-shadow: var(--led-glow);
+  line-height: 13px;
+  image-rendering: pixelated;
+  letter-spacing: 0.005em;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  font-size: 0.9rem;
+  padding: 0.3rem 0.9rem 0rem 0.9rem;
+  letter-spacing: 0.1rem;
+}
+
+/* Navbar Styles */
+.tamagotchi-mode .navbar {
+  background: var(--pixel-bg);
+  color: var(--pixel-color);
+  border-bottom: 2px solid var(--pixel-color);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tamagotchi-mode .logo {
+  color: var(--pixel-color);
+  font-family: 'Minecraftia', monospace;
+  font-size: 3em;
+  margin-top: 2rem;
+  text-shadow: 
+    0 0 5px rgba(255,255,255,0.8),
+    0 0 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Timer Card Styles */
+.tamagotchi-mode .timer-card {
+  background-color: #cccccc00;
+  border: 2px solid var(--pixel-color);
+  box-shadow: 0 0 20px rgba(222, 222, 222, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tamagotchi-mode .timer-digits {
+  font-family: 'Press Start 2P', cursive;
+  color: var(--pixel-color);
+  font-size: 9rem;
+  letter-spacing: 0.09em;
+  text-shadow: var(--led-glow);
+  background: none;
+  -webkit-text-fill-color: var(--pixel-color);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  animation: flicker 0.1s infinite;
+  left: 10px;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+}
+
+/* Dot Matrix Effect for Timer */
+.tamagotchi-mode .timer-digits::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 2px 2px, var(--grid-color) 1px, transparent 1px),
+    radial-gradient(circle at 6px 6px, var(--grid-color) 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Timer Controls */
+.tamagotchi-mode .timer-arrow,
+.tamagotchi-mode .timer-plus,
+.tamagotchi-mode .timer-minus,
+.tamagotchi-mode .timer-start {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 1.1rem;
+  background: var(--pixel-bg);
+  color: var(--pixel-color);
+  border: var(--pixel-size) solid var(--pixel-color);
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px var(--pixel-bg), 0 0 0 4px var(--pixel-color);
+  text-shadow: var(--led-glow);
+  image-rendering: pixelated;
+  padding: 0.7em 0.5em;
+  margin: 0 0.2em;
+  letter-spacing: 0.005em;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.tamagotchi-mode .fg-manage {
+  font-family: 'Press Start 2P', cursive !important;
+  padding: 1em 3em;
+  letter-spacing: 0.005em;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  text-shadow: var(--led-glow);
+}
+
+.tamagotchi-mode .timer-arrow:active,
+.tamagotchi-mode .timer-plus:active,
+.tamagotchi-mode .timer-minus:active,
+.tamagotchi-mode .timer-start:active {
+  background: var(--pixel-color);
+  color: var(--pixel-bg);
+  box-shadow: 0 0 0 2px var(--pixel-color), 0 0 0 4px var(--pixel-bg);
+}
+
+/* Timer Labels Row */
+.tamagotchi-mode .timer-labels-row,
+.tamagotchi-mode .timer-labels-row span {
+    font-family: 'Minecraftia', monospace !important;
+  font-size: 1.5rem;
+  color: var(--pixel-color);
+  letter-spacing: 0.08em;
+  text-shadow: var(--led-glow);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Timeline Hours and Bar */
+.tamagotchi-mode .timeline-hour,
+.tamagotchi-mode .timeline-label {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 0.9rem;
+  color: var(--pixel-color);
+  text-shadow: var(--led-glow);
+  letter-spacing: 0.005em;
+}
+.tamagotchi-mode .timeline-bar {
+  border: var(--pixel-size) solid var(--pixel-color);
+  background: var(--pixel-bg);
+  border-radius: 0;
+  box-shadow: 0 0 0 2px var(--pixel-bg), 0 0 0 4px var(--pixel-color);
+  image-rendering: pixelated;
+}
+.tamagotchi-mode .timeline-tick {
+  background: var(--pixel-color);
+  border-radius: 0;
+  right: 3px;
+  width: 6px;
+  height: 6px;
+  box-shadow: 0 0 0 2px var(--pixel-bg), 0 0 0 4px var(--pixel-color);
+}
+
+/* Task Manager Modal (outer and inner) */
+.tamagotchi-mode .task-manager-modal-window,
+.tamagotchi-mode .task-manager-modal-inner {
+  font-family: 'Press Start 2P', cursive !important;
+  background: var(--pixel-bg) !important;
+  color: var(--pixel-color) !important;
+  border: var(--pixel-size) solid var(--pixel-color) !important;
+  box-shadow: 0 0 0 2px var(--pixel-bg), 0 0 0 4px var(--pixel-color) !important;
+  text-shadow: var(--led-glow);
+  image-rendering: pixelated;
+}
+.tamagotchi-mode .task-manager-modal-inner input,
+.tamagotchi-mode .task-manager-modal-inner button {
+  font-family: 'Press Start 2P', cursive !important;
+  background: var(--pixel-bg) !important;
+  color: var(--pixel-color) !important;
+  border: var(--pixel-size) solid var(--pixel-color) !important;
+  box-shadow: 0 0 0 2px var(--pixel-bg), 0 0 0 4px var(--pixel-color) !important;
+  text-shadow: var(--led-glow);
+  image-rendering: pixelated;
+}
+
+/* Tama Mode Toggle beside Bookmark Options */
+.tamagotchi-mode .bookmark-options-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5em;
+}
+.tamagotchi-mode .tamagotchi-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.2em;
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 0.9rem;
+  background: var(--pixel-bg);
+  color: var(--pixel-color);
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px var(--pixel-bg), 0 0 0 2px var(--pixel-color);
+  text-shadow: var(--led-glow);
+  image-rendering: pixelated;
+  padding: 0.4em 0.em;
+  letter-spacing: 0.09em;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+.tamagotchi-mode .tamagotchi-toggle svg {
+  fill: currentColor;
+  opacity: 1;
+}
+
+.tamagotchi-mode .tamagotchi-toggle:active {
+  background: var(--pixel-color);
+  color: var(--pixel-bg);
+  box-shadow: 0 0 0 2px var(--pixel-color), 0 0 0 4px var(--pixel-bg);
+}
+
+/* Bookmark Styles */
+.tamagotchi-mode .bookmark-icons-row {
+  background: var(--pixel-bg);
+  border: var(--pixel-size) solid var(--pixel-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: var(--led-glow);
+}
+
+.tamagotchi-mode .bookmark-icon-btn {
+  background: var(--pixel-bg);
+  color: var(--pixel-color);
+  border: var(--pixel-size) solid var(--pixel-color);
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.7rem;
+  text-shadow: var(--led-glow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tamagotchi-mode .bookmark-icon-btn:hover {
+  transform: translate(var(--pixel-size), var(--pixel-size));
+  box-shadow: var(--led-glow);
+}
+
+
+/* Sound Toggle Button */
+.sound-toggle {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: var(--pixel-bg);
+  color: var(--pixel-color);
+  border: var(--pixel-size) solid var(--pixel-color);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--led-glow);
+}
+
+.sound-toggle:hover {
+  transform: scale(1.1);
+}
+
+.sound-toggle.active {
+  background: var(--pixel-color);
+  color: var(--pixel-bg);
+}
+
+@keyframes modernToPixel {
+  0% {
+    filter: blur(0) contrast(100%) saturate(100%) hue-rotate(0deg);
+    transform: scale(1) perspective(1000px) rotateX(0deg);
+    background-image: none;
+    box-shadow: none;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  20% {
+    filter: blur(1px) contrast(150%) saturate(150%) hue-rotate(5deg);
+    transform: scale(1.01) perspective(1000px) rotateX(1deg);
+  }
+  40% {
+    filter: blur(2px) contrast(200%) saturate(200%) hue-rotate(10deg);
+    transform: scale(1.02) perspective(800px) rotateX(2deg);
+    box-shadow: 
+      3px 0 0 rgba(255,0,0,0.4),
+      -3px 0 0 rgba(0,0,255,0.4);
+    clip-path: polygon(2% 2%, 98% 2%, 98% 98%, 2% 98%);
+  }
+  60% {
+    filter: blur(4px) contrast(300%) saturate(50%) hue-rotate(-5deg);
+    transform: scale(0.99) perspective(600px) rotateX(3deg);
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px);
+    background-size: 100% 2px;
+    box-shadow: 
+      5px 0 0 rgba(255,0,0,0.5),
+      -5px 0 0 rgba(0,255,0,0.3),
+      0 0 15px rgba(0,255,255,0.4);
+    clip-path: polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%);
+  }
+  80% {
+    filter: blur(6px) contrast(400%) saturate(20%) hue-rotate(-10deg);
+    transform: scale(0.98) perspective(500px) rotateX(2deg);
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.2) 1px, transparent 1px),
+      radial-gradient(circle, transparent 1px, rgba(0,0,0,0.1) 1px);
+    background-size: 100% 3px, 10px 10px;
+    box-shadow: 
+      0 0 20px rgba(0,255,255,0.6),
+      inset 0 0 10px rgba(0,0,0,0.8);
+  }
+  100% {
+    filter: blur(0) contrast(500%) saturate(10%) hue-rotate(0deg);
+    transform: scale(1) perspective(500px) rotateX(0.5deg);
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.25) 1px, transparent 1px),
+      radial-gradient(circle, transparent 1px, rgba(0,0,0,0.15) 1px);
+    background-size: 100% 4px, 8px 8px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+    image-rendering: pixelated;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border: 1px solid #444;
+  }
+}
+
+
+/* Enhanced Idle Animations */
+@keyframes crtFlicker {
+  0%, 100% { opacity: 0.95; }
+  20%, 60% { opacity: 0.98; }
+  40%, 80% { opacity: 0.92; }
+}
+
+
+.tamagotchi-mode .timer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, var(--grid-color) 1px, transparent 1px),
+    radial-gradient(circle at 80% 40%, var(--grid-color) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, var(--grid-color) 1px, transparent 1px);
+  background-size: 200px 200px;
+  animation: 
+    twinkle 4s infinite ease-in-out,
+    crtFlicker 0.3s infinite alternate;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 10;
+}
+
+.tamagotchi-mode .timer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.app-root-layout.tamagotchi-mode {
+  background: linear-gradient(to bottom, #1d1d1d, #000) !important;
+  animation: crtFlicker 0.2s infinite alternate;
+}
+
+.tamagotchi-mode .footer-title,
+.tamagotchi-mode .footer-tagline,
+.tamagotchi-mode .footer-copyright{
+  display: none !important;
+}
+.tamagotchi-mode .footer-madeby {
+  font-family: 'Minecraftia', monospace;
+  font-size: 24px; 
+  font-weight: 400;
+  -webkit-font-smoothing: none; 
+  -moz-osx-font-smoothing: grayscale; 
+  image-rendering: pixelated; 
+  text-rendering: optimizeSpeed; 
+}
+
+.footer-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 24px; 
+  justify-content: center;
+  align-items: center;
+}
+  
+.footer-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  transition: transform 0.18s cubic-bezier(.4, 1.3, .6, 1), filter 0.18s;
+  filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.25));
+  border-radius: 50%;
+  text-decoration: none;
+  outline: none;
+}
+
+.footer-icon-link:hover,
+.footer-icon-link:focus {
+  transform: scale(1.08);
+  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.35));
+  background: rgba(255, 255, 255, 0.04);
+}
