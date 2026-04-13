@@ -14,20 +14,22 @@ export default function TaskManager({ tasks, onAdd, onDelete, onReorder, onClose
   const handleEdit = (idx) => {
     setEditingIndex(idx);
     setEditName(tasks[idx].label);
-    setEditMinutes(Math.round(tasks[idx].duration / 60));
+    setEditMinutes(String(Math.round(tasks[idx].duration / 60)));
   };
 
   const handleEditSave = (idx) => {
     if (editName && editMinutes) {
+      const mins = Math.min(parseInt(editMinutes), 59);
       tasks[idx].label = editName;
-      tasks[idx].duration = parseInt(editMinutes) * 60;
+      tasks[idx].duration = mins * 60;
       setEditingIndex(null);
     }
   };
 
   const handleAddTask = () => {
     if (newName && newMinutes) {
-      onAdd({ label: newName, duration: parseInt(newMinutes) * 60 });
+      const mins = Math.min(parseInt(newMinutes), 59);
+      onAdd({ label: newName, duration: mins * 60 });
       setNewName("");
       setNewMinutes("");
       setShowAdd(false);
@@ -65,10 +67,9 @@ export default function TaskManager({ tasks, onAdd, onDelete, onReorder, onClose
   };
 
   const validateMinutes = (value) => {
-    // Only allow positive numbers
     const num = parseInt(value);
     if (isNaN(num) || num <= 0) return "";
-    return num.toString();
+    return Math.min(num, 59).toString();
   };
 
   return (
@@ -92,9 +93,9 @@ export default function TaskManager({ tasks, onAdd, onDelete, onReorder, onClose
       </div>
       <div className="modal-content">
         {tasks.length === 0 ? (
-          <div style={{ 
-            textAlign: "center", 
-            padding: "20px", 
+          <div style={{
+            textAlign: "center",
+            padding: "20px",
             color: "#888",
             fontFamily: "Inter, sans-serif",
             fontSize: 16
@@ -119,7 +120,7 @@ export default function TaskManager({ tasks, onAdd, onDelete, onReorder, onClose
                   onDrop={(e) => handleDrop(e, idx)}
                   onDragEnd={handleDragEnd}
                 >
-                  
+
                   <span
                     className="task-drag-handle"
                     style={{
@@ -255,7 +256,7 @@ export default function TaskManager({ tasks, onAdd, onDelete, onReorder, onClose
           </ul>
         )}
         {showAdd ? (
-          <div style={{ marginTop: 18, display: "flex", flexDirection: "column"}}>
+          <div style={{ marginTop: 18, display: "flex", flexDirection: "column" }}>
             <input
               placeholder="Task name"
               value={newName}
@@ -269,9 +270,9 @@ export default function TaskManager({ tasks, onAdd, onDelete, onReorder, onClose
                 background: "#333",
                 color: "#fff",
                 boxSizing: "border-box",
-                width: "95%", 
+                width: "95%",
                 margin: "0 0 8px 8px"
-               
+
               }}
             />
             <input
@@ -317,7 +318,7 @@ export default function TaskManager({ tasks, onAdd, onDelete, onReorder, onClose
                   padding: "8px 18px",
                   fontWeight: 600,
                   margin: "0 0 8px 8px"
-                  
+
                 }}
               >
                 Add
